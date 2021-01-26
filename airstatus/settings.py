@@ -128,9 +128,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/var/www/static/'
-STATIC_ROOT = '/static/'
-STATICFILES_DIRS = ['/var/www/static/']
+STATIC_URL = 'static/'
+STATIC_ROOT = '/home/root/airstatus/'
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_METHODS = list(default_methods) + [
