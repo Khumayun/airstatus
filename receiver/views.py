@@ -2,6 +2,7 @@ from .models import *
 from .serializers import *
 from drf_multiple_model.views import ObjectMultipleModelAPIView
 from rest_framework.response import Response
+from rest_framework.generics import ListAPIView
 from rest_framework.decorators import api_view
 from rest_framework import status
 
@@ -51,3 +52,27 @@ def writer(request):
 			co2_data.save()
 
 		return Response(status=status.HTTP_201_CREATED)
+
+class PM1View(ListAPIView):
+	queryset = PM.objects.all()
+	serializer_class = PM1Serializer
+
+class PM25View(ListAPIView):
+	queryset = PM.objects.all()
+	serializer_class = PM25Serializer
+
+class PM10View(ListAPIView):
+	queryset = PM.objects.all()
+	serializer_class = PM10Serializer
+
+class TemperatureView(ListAPIView):
+	queryset = Temperature.objects.all()
+	serializer_class = TemperatureSerializer
+
+class HumidityView(ListAPIView):
+	queryset = Humidity
+	serializer_class = HumiditySerializer
+
+class CO2View(ListAPIView):
+	queryset = CO2
+	serializer_class = CO2Serializer
