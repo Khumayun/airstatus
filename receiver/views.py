@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.generics import ListAPIView
 from rest_framework.decorators import api_view
 from rest_framework import status
+import datetime
 
 class Reader(ObjectMultipleModelAPIView):
 	querylist = [
@@ -54,7 +55,7 @@ def writer(request):
 		return Response(status=status.HTTP_201_CREATED)
 
 class PM1View(ListAPIView):
-	queryset = PM.objects.all()
+	queryset = PM.objects.filter(time__gte=datetime.datetime(2021,1,1, 12,33,0), time__lte=datetime.datetime(2021,1,30, 12,34,0))
 	serializer_class = PM1Serializer
 
 class PM25View(ListAPIView):
@@ -70,9 +71,9 @@ class TemperatureView(ListAPIView):
 	serializer_class = TemperatureSerializer
 
 class HumidityView(ListAPIView):
-	queryset = Humidity
+	queryset = Humidity.objects.all()
 	serializer_class = HumiditySerializer
 
 class CO2View(ListAPIView):
-	queryset = CO2
+	queryset = CO2.objects.all()
 	serializer_class = CO2Serializer
