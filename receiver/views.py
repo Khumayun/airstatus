@@ -25,7 +25,7 @@ class Reader(ObjectMultipleModelAPIView):
 		'serializer_class': CO2Serializer
 	}]
 
-@api_view(['POST'])
+@api_view(['POST', 'GET'])
 def writer(request):
 	serializer = PMSerializer(PM.objects.all(), many = True)
 	if request.method == 'POST':
