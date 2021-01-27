@@ -55,25 +55,49 @@ def writer(request):
 		return Response(status=status.HTTP_201_CREATED)
 
 class PM1View(ListAPIView):
-	queryset = PM.objects.filter(time__gte=datetime.datetime(2021,1,1, 12,33,0), time__lte=datetime.datetime(2021,1,30, 12,34,0))
 	serializer_class = PM1Serializer
+	def get_queryset(self):
+		dateA = self.request.GET.get('time_start')
+		dateB = self.request.GET.get('time_end')
+		queryset = PM.objects.filter(time__range=(dateA, dateB))
+		return queryset
 
 class PM25View(ListAPIView):
-	queryset = PM.objects.all()
 	serializer_class = PM25Serializer
+	def get_queryset(self):
+		dateA = self.request.GET.get('time_start')
+		dateB = self.request.GET.get('time_end')
+		queryset = PM.objects.filter(time__range=(dateA, dateB))
+		return queryset
 
 class PM10View(ListAPIView):
-	queryset = PM.objects.all()
 	serializer_class = PM10Serializer
+	def get_queryset(self):
+		dateA = self.request.GET.get('time_start')
+		dateB = self.request.GET.get('time_end')
+		queryset = PM.objects.filter(time__range=(dateA, dateB))
+		return queryset
 
 class TemperatureView(ListAPIView):
-	queryset = Temperature.objects.all()
 	serializer_class = TemperatureSerializer
+	def get_queryset(self):
+		dateA = self.request.GET.get('time_start')
+		dateB = self.request.GET.get('time_end')
+		queryset = Temperature.objects.filter(time__range=(dateA, dateB))
+		return queryset
 
 class HumidityView(ListAPIView):
-	queryset = Humidity.objects.all()
 	serializer_class = HumiditySerializer
+	def get_queryset(self):
+		dateA = self.request.GET.get('time_start')
+		dateB = self.request.GET.get('time_end')
+		queryset = Humidity.objects.filter(time__range=(dateA, dateB))
+		return queryset
 
 class CO2View(ListAPIView):
-	queryset = CO2.objects.all()
 	serializer_class = CO2Serializer
+	def get_queryset(self):
+		dateA = self.request.GET.get('time_start')
+		dateB = self.request.GET.get('time_end')
+		queryset = CO2.objects.filter(time__range=(dateA, dateB))
+		return queryset
