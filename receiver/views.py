@@ -78,6 +78,14 @@ class PM10View(ListAPIView):
 		queryset = PM.objects.filter(time__range=(dateA, dateB))
 		return queryset
 
+class PMsView(ListAPIView):
+	serializer_class = PMsSerializer
+	def get_queryset(self):
+		dateA = self.request.GET.get('time_start')
+		dateB = self.request.GET.get('time_end')
+		queryset = PM.objects.filter(time__range=(dateA, dateB))
+		return queryset
+
 class TemperatureView(ListAPIView):
 	serializer_class = TemperatureSerializer
 	def get_queryset(self):

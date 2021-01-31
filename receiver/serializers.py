@@ -21,6 +21,11 @@ class PM10Serializer(serializers.ModelSerializer):
 		model = PM
 		fields = ['id', 'pm10', 'time']
 
+class PMsSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = PM
+		fields = ['id', 'pm1', 'pm25', 'pm10', 'time']
+
 class TemperatureSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Temperature
